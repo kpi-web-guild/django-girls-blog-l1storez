@@ -1,0 +1,23 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  linters:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Fetch the src
+      uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install pre-commit
+      run: python -m pip install --upgrade pre-commit
+
+    - name: Run pre-commit
+      run: python -m pre_commit run --all-files
