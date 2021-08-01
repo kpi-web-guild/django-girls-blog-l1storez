@@ -1,1 +1,1 @@
-"""docstring^_^."""
+"""My own blog on Django."""
