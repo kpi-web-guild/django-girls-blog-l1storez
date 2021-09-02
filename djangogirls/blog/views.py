@@ -57,3 +57,10 @@ def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
     return redirect('post_detail', pk=pk)
+
+
+def post_remove(request, pk):
+    """Render remove post on the webpage."""
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('post_list')
