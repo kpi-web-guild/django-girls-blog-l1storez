@@ -37,13 +37,13 @@ class ViewsTest(TestCase):
             created_date=datetime(
                 day=1, month=10,
                 year=2021,
-                tz=time_zone,
+                tzinfo=time_zone,
             ),
             published_date=datetime(
                 day=1,
                 month=10,
                 year=2021,
-                tz=time_zone,
+                tzinfo=time_zone,
             ),
         )
 
@@ -53,12 +53,12 @@ class ViewsTest(TestCase):
             created_date=datetime(
                 day=1, month=5,
                 year=2035,
-                tz=time_zone,
+                tzinfo=time_zone,
             ),
             published_date=datetime(
                 day=1, month=5,
                 year=2035,
-                tz=time_zone,
+                tzinfo=time_zone,
             ),
         )
 
@@ -68,30 +68,30 @@ class ViewsTest(TestCase):
             created_date=datetime(
                 day=1, month=8,
                 year=2010,
-                tz=time_zone,
+                tzinfo=time_zone,
             ),
             published_date=datetime(
                 day=1, month=8,
                 year=2010,
-                tz=time_zone,
+                tzinfo=time_zone,
             ),
         )
 
         post_list_url = reverse('post_list')
         posts_at_date = {
             # long time ago
-            datetime(day=1, month=1, year=1990, tz=time_zone): [],
+            datetime(day=1, month=1, year=1990, tzinfo=time_zone): [],
             # after the first post
-            datetime(day=1, month=1, year=2022, tz=time_zone): [past_post],
+            datetime(day=1, month=1, year=2022, tzinfo=time_zone): [past_post],
             # after the two posts
             datetime(
                 day=1, month=12, year=2021,
-                tz=time_zone,
+                tzinfo=time_zone,
             ): [post, past_post],
             # far in the future, after all three posts
             datetime(
                 day=1, month=4, year=2100,
-                tz=time_zone,
+                tzinfo=time_zone,
             ): [future_post, post, past_post],
         }
         for current_date, expected_posts in posts_at_date.items():
